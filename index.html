@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>西南交大 · 共享单车轨迹</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="base"></canvas>
+  <canvas id="traj"></canvas>
+  <canvas id="tint"></canvas>
+  <div id="vignette"></div>
+
+  <header id="hud">
+    <div class="title">西南交大 · 共享单车轨迹</div>
+    <div class="sub">2022-12-01 晚 · 模拟实时位置</div>
+    <div class="stats">
+      <span id="phase">🌇</span>
+      <span id="clock">18:11:05</span>
+      <span id="active">进行中 0</span>
+    </div>
+  </header>
+
+  <aside id="panel" class="hidden">
+    <button id="close" type="button" aria-label="关闭">×</button>
+    <h2>订单详情</h2>
+    <div id="panelBody"></div>
+  </aside>
+
+  <div id="legend">
+    <span><i class="dot inner"></i>区内</span>
+    <span><i class="dot in"></i>骑入</span>
+    <span><i class="dot out"></i>骑出</span>
+    <span><i class="dot slow"></i>忘记还车（白点）</span>
+  </div>
+
+  <footer id="timeline">
+    <button id="play" type="button" title="空格 播放/暂停">▶</button>
+    <div class="track">
+      <input id="range" type="range" min="0" max="100" step="1" value="0">
+      <div class="hint">空格 播放/暂停 · ← → 移动时间</div>
+    </div>
+    <div id="speedWrap">
+      <button id="speedBtn" type="button">1× ▾</button>
+      <div id="speedMenu" class="hidden"></div>
+    </div>
+  </footer>
+</div>
+
+<div id="timeTip" class="time-tip" hidden></div>
+<div id="timeGuide" class="time-guide" hidden></div>
+
+<script src="data/processed/map.js"></script>
+<script src="data/processed/orders.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
